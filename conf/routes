@@ -1,0 +1,33 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                           controllers.Application.index
+
+# Authentication
+POST        /login                      controllers.Application.authenticate
+GET         /logout                     controllers.Application.logout
+
+
+# Accounts
+GET         /accounts                   controllers.Accounts.accounts
+POST        /accounts                   controllers.Accounts.newAccount
+PUT         /accounts/:account          controllers.Accounts.editAccount(account: Long)
+DELETE      /accounts/:account          controllers.Accounts.deleteAccount(account: Long)
+
+# Attendances
+GET         /attendances                controllers.Attendances.attendances
+POST        /attendances                controllers.Attendances.newAttendance
+PUT         /attendances/:attendance    controllers.Attendances.editAttendance(attendance: Long)
+DELETE      /attendances/:attendance    controllers.Attendances.deleteAttendance(attendance: Long)
+
+# Events
+GET         /events                     controllers.Events.events
+POST        /events                     controllers.Events.newEvent
+PUT         /events/:event              controllers.Events.editEvent(event: Long)
+DELETE      /events/:event              controllers.Events.deleteEvent(event: Long)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file               controllers.Assets.at(path="/public", file)
