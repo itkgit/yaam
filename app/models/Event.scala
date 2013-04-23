@@ -8,7 +8,14 @@ import anorm.SqlParser._
 
 import org.joda.time.{LocalDate,LocalTime}
 
-case class Event(id: Pk[Long],name:String,description:String,date:LocalDate,startAt:LocalTime,endAt:Option[LocalTime]);
+case class Event (
+	id: Pk[Long],
+	name:String,
+	description:String,
+	date:LocalDate,
+	startAt:LocalTime,
+	endAt:Option[LocalTime]
+)
 
 object Event {
 
