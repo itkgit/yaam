@@ -6,28 +6,39 @@ import play.api.Play.current
 import anorm._
 import anorm.SqlParser._
 
-case class Event(id: Pk[Long],name:String,description:String,date:Date,startAt:Int,endAt:Int);
+import org.joda.time.{LocalDate,LocalTime}
+
+case class Event(id: Pk[Long],name:String,description:String,date:LocalDate,startAt:LocalTime,endAt:Option[LocalTime]);
 
 object Event {
 
 	//もっくデータ
-	var fixtures = [
+	val fixtures = List(
 		new Event(
-			1,
+			Id(1),
 			"テストイベント1",
 			"テストのテストによるテストのためのデータ",
-			java.text.SimpleDateFormat("yyyy/MM/dd").parse("2013/04/01"),
-			60*8,
-			60*10),
+			new LocalDate(2004,4,1),
+			new LocalTime(9,30),
+			Some(new LocalTime(12,0))
+		),
 		new Event(
-			2,
-			"テストイベント1",
+			Id(2),
+			"テストイベント2",
 			"テストのテストによるテストのためのデータ",
-			java.text.SimpleDateFormat("yyyy/MM/dd").parse("2013/04/01"),
-			60*8,
-			60*10)
-
-	]
+			new LocalDate(2004,4,1),
+			new LocalTime(9,30),
+			Some(new LocalTime(12,0))
+		),
+		new Event(
+			Id(3),
+			"テストイベント3",
+			"テストのテストによるテストのためのデータ",
+			new LocalDate(2004,4,1),
+			new LocalTime(9,30),
+			None
+		)
+	)
 
 	def findAll():Seq[Event] = fixtures;
 

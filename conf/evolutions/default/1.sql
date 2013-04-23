@@ -19,7 +19,7 @@ create table event (
   description             varchar(255) not null,
   date                    date not null,
   start_at                time not null,
-  end_at                  time not null,
+  end_at                  time ,
   created_at              timestamp,
   updated_at              timestamp
 );
